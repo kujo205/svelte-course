@@ -1,19 +1,31 @@
-<script lang="ts">
+<script>
+	let user = {
+		loggedIn: false
+	};
 
-	let count = 0;
-
-	$: itemsTitle = count === 1 ? 'item' : 'items';
-	$: console.log('Count changed:', count);
+	function toggle() {
+		user.loggedIn = !user.loggedIn;
+	}
 </script>
 
+{#if user.loggedIn}
+	<p>
+		User is logged in, log em out
+	</p>
+	<button class="btn primary" on:click={toggle}>
+		Log out
+	</button>
+{/if}
 
-<div class="wrapper">
-	<div>
-		<button class="btn primary" on:click={()=>{count=count + 1}}>Increment</button>
-		<button class="btn secondary" on:click={()=>{count=count - 1}}>Decrement</button>
-	</div>
-	<div>Count: {count} {itemsTitle}</div>
-</div>
+
+{#if !user.loggedIn}
+	<p>
+		User is not logged in, log em in
+	</p>
+	<button class="btn secondary" on:click={toggle}>
+		Log in
+	</button>
+{/if}
 
 
 <style>
