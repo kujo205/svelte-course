@@ -3,7 +3,7 @@
 	let count = 0;
 
 	$: itemsTitle = count === 1 ? 'item' : 'items';
-
+	$: console.log('Count changed:', count);
 </script>
 
 
