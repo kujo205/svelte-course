@@ -1,24 +1,29 @@
 <script lang="ts">
-	let mousePosition = {
-		x: 0,
-		y: 0
-	};
+	let list = ['React', 'Vue', 'Svelte'];
+	let filteredList: string[] = [];
+	let searchQuery = '';
 
-	const handleMousePositionChange = (event: MouseEvent) => {
-		mousePosition = {
-			x: event.clientX,
-			y: event.clientY
-		};
-	};
-
-
+	function filterList() {
+		filteredList = list.filter(item => {
+			return item
+				.toLowerCase()
+				.includes(searchQuery.toLowerCase());
+		});
+	}
 </script>
 
+<input
+	on:input={filterList}
+	bind:value={searchQuery}
+	type="text"
+/>
 
-<div class="wrapper" on:mousemove|stopPropagation={handleMousePositionChange}>
-	<p> x: {mousePosition.x} </p>
-	<p> y: {mousePosition.y} </p>
-</div>
+<ul>
+	{#each filteredList as item}
+		<li>{item}</li>
+	{/each}
+</ul>
+
 
 <style>
     :root {
@@ -26,9 +31,5 @@
         --secondary: white;
     }
 
-    .wrapper {
-        width: 90vw;
-        height: 90vh;
-    }
 
 </style>
