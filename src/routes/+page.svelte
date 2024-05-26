@@ -1,35 +1,34 @@
-<script lang="ts">
-	let list = ['React', 'Vue', 'Svelte'];
-	let filteredList: string[] = [];
-	let searchQuery = '';
+<script>
+	import Artist from './Artist.svelte';
+	import Album from './Album.svelte';
 
-	function filterList() {
-		filteredList = list.filter(item => {
-			return item
-				.toLowerCase()
-				.includes(searchQuery.toLowerCase());
-		});
-	}
+	let artists = [
+		{
+			name: 'Fleetwood Mac',
+			albums: [
+				{
+					name: 'Tango in the Night',
+					year: 1987,
+					tracks: [
+						{ title: 'Big Love', length: '3:37' },
+						{ title: 'Seven Wonders', length: '3:38' },
+						{ title: 'Everywhere', length: '3:48' },
+						{ title: 'Caroline', length: '3:50' },
+						{ title: 'Tango in the Night', length: '3:56' },
+						{ title: 'Mystified', length: '3:08' }
+					]
+				}
+			]
+		}
+	];
 </script>
 
-<input
-	on:input={filterList}
-	bind:value={searchQuery}
-	type="text"
-/>
-
-<ul>
-	{#each filteredList as item}
-		<li>{item}</li>
+{#each artists as artist}
+	<Artist artistName={artist.name} />
+	{#each artist.albums as album}
+		<Album
+			albumTitle={album.name}
+			albumTracks={album.tracks}
+		/>
 	{/each}
-</ul>
-
-
-<style>
-    :root {
-        --primary: #007bff;
-        --secondary: white;
-    }
-
-
-</style>
+{/each}
