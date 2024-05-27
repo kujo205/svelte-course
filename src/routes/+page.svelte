@@ -1,6 +1,7 @@
 <script>
 	import Artist from './Artist.svelte';
 	import Album from './Album.svelte';
+	import Button from '../components/Button.svelte';
 
 	let artists = [
 		{
@@ -22,6 +23,10 @@
 		}
 	];
 </script>
+
+<Button variant="primary">
+	Hey, click me!
+</Button>
 
 {#each artists as artist}
 	<Artist artistName={artist.name} />
