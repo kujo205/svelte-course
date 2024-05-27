@@ -34,13 +34,7 @@
 </script>
 
 {#if toggled}
-	<blockquote transition:fade={{delay: 250, duration: 300}}>
-		Memories fade, but friends are forever
-	</blockquote>
-	<blockquote transition:fly={{delay: 250, duration: 300}}>
-		Memories fade, but friends are forever
-	</blockquote>
-	<blockquote transition:blur={{delay: 250, duration: 300}}>
+	<blockquote in:fly={{delay: 250, duration: 300}} out:fly={{duration:150, delay:100}}>
 		Memories fade, but friends are forever
 	</blockquote>
 {/if}
