@@ -10,7 +10,7 @@
 </script>
 
 
-<button class={'btn ' + variant} {...$$restProps}>
+<button class={'btn ' + variant} {...$$restProps} on:click>
 	<slot name="icon"></slot>
 	<slot name="title"></slot>
 </button>
