@@ -5,14 +5,15 @@
 		variant?: TVariant;
 	}
 
+	const { class: className } = $$restProps;
+
 	type TVariant = 'primary' | 'secondary';
 	export let variant: TVariant = 'primary';
 </script>
 
 
-<button class={'btn ' + variant} {...$$restProps} on:click>
-	<slot name="icon"></slot>
-	<slot name="title"></slot>
+<button {...$$restProps} class={'btn ' + variant + ' ' + className} on:click>
+	<slot />
 </button>
 
 
