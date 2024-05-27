@@ -11,7 +11,8 @@
 
 
 <button class={'btn ' + variant} {...$$restProps}>
-	<slot />
+	<slot name="icon"></slot>
+	<slot name="title"></slot>
 </button>
 
 

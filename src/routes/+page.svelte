@@ -25,7 +25,8 @@
 </script>
 
 <Button variant="primary">
-	Hey, click me!
+	<span slot="icon">➕</span>
+	<span slot="title">Add</span>
 </Button>
 
 {#each artists as artist}
